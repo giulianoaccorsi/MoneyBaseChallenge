@@ -2,6 +2,12 @@
 
 iOS stock tracking application built with SwiftUI that provides real-time stock market data and detailed company information.
 
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/0c655b94-a8f6-4fdc-bc64-51d2d4c6b8a8" alt="Stock List" width="300"/>
+  <img src="https://github.com/user-attachments/assets/4aba32fa-9ad4-42ca-81f1-8cdebad8df5d" alt="Stock Details" width="300"/>
+</div>
+
+
 ## Architecture
 
 MoneyBase follows a clean **MVVM (Model-View-ViewModel)** architecture with clear separation of concerns:
