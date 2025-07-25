@@ -20,6 +20,10 @@ struct StockEntity: Codable, Identifiable {
         pctchange.hasPrefix("-")
     }
     
+    var netChangeValue: String {
+        return "$ \(netchange)"
+    }
+    
     enum CodingKeys: String, CodingKey {
         case symbol, name, lastsale, netchange, pctchange, marketCap
     }

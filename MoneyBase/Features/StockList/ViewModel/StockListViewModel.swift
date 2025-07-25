@@ -26,7 +26,6 @@ final class StockListViewModel {
             return stocks
         } else {
             return stocks.filter { stock in
-                stock.symbol.lowercased().contains(searchText.lowercased()) ||
                 stock.name.lowercased().contains(searchText.lowercased())
             }
         }
@@ -38,11 +37,6 @@ final class StockListViewModel {
     
     var canGoToNextPage: Bool {
         return !isUpdating
-    }
-    
-    var errorMessage: String? {
-        if case .error(let message) = viewState { return message }
-        return nil
     }
     
     init(useCase: StockUseCaseProtocol = StockUseCase()) {
@@ -67,8 +61,8 @@ final class StockListViewModel {
             } catch {
                 guard !Task.isCancelled else { return }
                 
-                let errorMessage = (error as? NetworkError)?.errorDescription ?? error.localizedDescription
-                viewState = .error(errorMessage)
+                let error = (error as? NetworkError) ?? .unknown
+                viewState = .error(error)
             }
         }
         
@@ -95,6 +89,7 @@ final class StockListViewModel {
     }
 
     func refreshStocks() {
+        viewState = .loading
         loadingTask?.cancel()
         stopAutoUpdate()
         loadingTask = Task {
@@ -103,8 +98,11 @@ final class StockListViewModel {
         }
     }
     
-    private func startAutoUpdate() {
-        updateTimer = Timer.scheduledTimer(withTimeInterval: 8.0, repeats: true) { [weak self] _ in
+    func startAutoUpdate() {
+        updateTimer = Timer.scheduledTimer(
+            withTimeInterval: 8.0,
+            repeats: true
+        ) { [weak self] _ in
             self?.loadingTask = Task {
                 self?.isUpdating = true
                 await self?.loadStocks()
@@ -112,9 +110,10 @@ final class StockListViewModel {
         }
     }
     
-    private func stopAutoUpdate() {
+    func stopAutoUpdate() {
         updateTimer?.invalidate()
         updateTimer = nil
         isUpdating = false
     }
 }
+

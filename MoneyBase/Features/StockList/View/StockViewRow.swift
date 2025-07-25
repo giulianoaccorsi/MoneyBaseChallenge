@@ -31,9 +31,11 @@ struct StockViewRow: View {
                 
                 Text(stock.pctchange)
                     .font(DesignSystem.Typography.boldSmall)
-                    .foregroundColor(stock.isPorcentNegative ?
-                                   DesignSystem.Colors.stockNegative : 
-                                   DesignSystem.Colors.stockPositive)
+                    .foregroundColor(
+                        stock.isPorcentNegative ?
+                        DesignSystem.Colors.stockNegative : 
+                            DesignSystem.Colors.stockPositive
+                    )
             }
         }
         .padding(DesignSystem.Spacing.sm)

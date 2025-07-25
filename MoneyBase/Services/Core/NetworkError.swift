@@ -21,7 +21,10 @@ enum NetworkError: Error, LocalizedError {
         case .noResponse:
             return AppStrings.NetworkError.noResponse
         case .decodingError(let error):
-            return String(format: AppStrings.NetworkError.decodingError, error.localizedDescription)
+            return String(
+                format: AppStrings.NetworkError.decodingError,
+                error.localizedDescription
+            )
         case .serverError(let code):
             return String(format: AppStrings.NetworkError.serverError, code)
         case .unknown:

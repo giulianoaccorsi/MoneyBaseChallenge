@@ -9,12 +9,17 @@ import Foundation
 
 enum YahooFinanceEndpoint {
     case getAllStocks(page: Int)
-    case getStockDetail(id: String)
+    case getStockDetail(symbol: String)
 }
 
 extension YahooFinanceEndpoint: APIEndpointProtocol {
     var apiVersion: String {
-        "v2/"
+        switch self {
+        case .getAllStocks:
+            "v2/"
+        case .getStockDetail:
+            "v1/"
+        }
     }
     
     var baseURL: String {
@@ -33,7 +38,7 @@ extension YahooFinanceEndpoint: APIEndpointProtocol {
         case .getAllStocks:
             "markets/tickers"
         case .getStockDetail:
-            "markets/tickers"
+            "markets/stock/modules"
         }
     }
     
@@ -46,8 +51,8 @@ extension YahooFinanceEndpoint: APIEndpointProtocol {
         switch self {
         case .getAllStocks(let page):
             return ["page": page, "type": "STOCKS"]
-        case .getStockDetail(let id):
-            return ["id": id, "type": "STOCKS"]
+        case .getStockDetail(let symbol):
+            return ["ticker": symbol, "module": "asset-profile"]
         }
     }
     

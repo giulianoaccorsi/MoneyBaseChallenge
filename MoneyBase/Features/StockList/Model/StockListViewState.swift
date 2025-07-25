@@ -10,5 +10,5 @@ import Foundation
 enum StockListViewState {
     case loading
     case loaded([StockEntity])
-    case error(String)
+    case error(NetworkError)
 }

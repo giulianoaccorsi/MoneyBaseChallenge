@@ -15,11 +15,11 @@ struct StockListView: View {
     }
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack(spacing: DesignSystem.Spacing.none) {
                 content
             }
-            .navigationTitle(AppStrings.UI.navigationTitle)
+            .navigationTitle(.navigationTitle)
             .background(DesignSystem.Colors.backgroundPrimary)
             .task {
                 await viewModel.loadStocks()
@@ -31,38 +31,33 @@ struct StockListView: View {
     private var content: some View {
         switch viewModel.viewState {
         case .loading:
-            loadingView
+            LoadingView()
             
         case .loaded(let stocks):
             stocksList(stocks: stocks)
             
-        case .error(let message):
-            errorView(message: message)
+        case .error(let error):
+            ErrorView(error: error) {
+                viewModel.refreshStocks()
+            }
         }
-    }
-    
-    private var loadingView: some View {
-        VStack(spacing: DesignSystem.Spacing.md) {
-            ProgressView()
-                .scaleEffect(1.2)
-                .progressViewStyle(CircularProgressViewStyle(tint: DesignSystem.Colors.primary))
-            
-            Text(AppStrings.UI.loadingMessage)
-                .font(DesignSystem.Typography.boldLarge)
-                .foregroundColor(DesignSystem.Colors.textSecondary)
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(DesignSystem.Colors.backgroundPrimary)
     }
     
     private func stocksList(stocks: [StockEntity]) -> some View {
         VStack(spacing: DesignSystem.Spacing.none) {
             List {
                 ForEach(viewModel.filteredStocks) { stock in
-                    StockViewRow(stock: stock)
+                    NavigationLink {
+                        StockDetailView(
+                            viewModel: StockDetailViewModel(stock: stock)
+                        )
+                    } label: {
+                        StockViewRow(stock: stock)
+                    }
+                    .listRowSeparator(.hidden)
                 }
             }
-            .searchable(text: $viewModel.searchText, prompt: Text(AppStrings.UI.searchPlaceholder))
+            .searchable(text: $viewModel.searchText, prompt: Text(.searchPlaceholder))
             .refreshable {
                 viewModel.refreshStocks()
             }
@@ -71,7 +66,7 @@ struct StockListView: View {
                 ToolbarItemGroup {
                     Text("\(AppStrings.UI.updatedLabel) \(viewModel.lastUpdate.formatted(date: .omitted, time: .standard))")
                         .font(DesignSystem.Typography.thinSmall)
-                        .foregroundColor(DesignSystem.Colors.textTertiary)
+                        .foregroundColor(DesignSystem.Colors.textSecondary)
                 }
                 
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
@@ -79,16 +74,18 @@ struct StockListView: View {
                         Button {
                             viewModel.goToPreviousPage()
                         } label: {
-                            Image(systemName: AppStrings.SystemImages.chevronLeft)
+                            Image(
+                                systemName: AppStrings.SystemImages.chevronLeft
+                            )
                                 .font(DesignSystem.Typography.thinSmall)
                                 .foregroundColor(viewModel.canGoToPreviousPage ?
-                                              DesignSystem.Colors.primary : 
-                                              DesignSystem.Colors.textDisabled)
+                                                 DesignSystem.Colors.primary :
+                                                    DesignSystem.Colors.textDisabled)
                         }
                         .disabled(!viewModel.canGoToPreviousPage)
                         
                         Text("\(viewModel.currentPage)")
-                            .font(DesignSystem.Typography.thinMedium)
+                            .font(DesignSystem.Typography.thinSmall)
                             .foregroundColor(DesignSystem.Colors.textSecondary)
                             .frame(minWidth: 30)
                         
@@ -98,8 +95,8 @@ struct StockListView: View {
                             Image(systemName: AppStrings.SystemImages.chevronRight)
                                 .font(DesignSystem.Typography.thinSmall)
                                 .foregroundColor(viewModel.canGoToNextPage ?
-                                              DesignSystem.Colors.primary : 
-                                              DesignSystem.Colors.textDisabled)
+                                                 DesignSystem.Colors.primary :
+                                                    DesignSystem.Colors.textDisabled)
                         }
                         .disabled(!viewModel.canGoToNextPage)
                     }
@@ -107,33 +104,10 @@ struct StockListView: View {
             }
         }
     }
-    
-    private func errorView(message: String) -> some View {
-        VStack(spacing: DesignSystem.Spacing.md) {
-            Image(systemName: AppStrings.SystemImages.errorTriangle)
-                .font(DesignSystem.Typography.boldLarge)
-                .foregroundColor(DesignSystem.Colors.warning)
-            
-            Text(AppStrings.UI.errorTitle)
-                .font(DesignSystem.Typography.boldSmall)
-                .foregroundColor(DesignSystem.Colors.textPrimary)
-            
-            Text(message)
-                .font(DesignSystem.Typography.boldMedium)
-                .foregroundColor(DesignSystem.Colors.textSecondary)
-                .multilineTextAlignment(.center)
-                .padding(.horizontal, DesignSystem.Spacing.lg)
-            
-            Button(AppStrings.UI.tryAgainButton) {
-                viewModel.refreshStocks()
-            }
-            .padding(.top, DesignSystem.Spacing.sm)
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(DesignSystem.Colors.backgroundPrimary)
-    }
 }
 
 #Preview {
-    StockListView(viewModel: .init())
+    NavigationStack {
+        StockListView(viewModel: StockListViewModel(useCase: MockStockUseCase()))
+    }
 }

@@ -1,0 +1,218 @@
+{
+    "meta": {
+        "version": "v1.0",
+        "status": 200,
+        "copywrite": "https://apicalls.io",
+        "totalrecords": 6973,
+        "headers": {
+            "symbol": "Symbol",
+            "name": "Name",
+            "lastsale": "Last Sale",
+            "netchange": "Net Change",
+            "pctchange": "% Change",
+            "marketCap": "Market Cap"
+        }
+    },
+    "body": [
+        {
+            "symbol": "BAC",
+            "name": "Bank of America Corporation Common Stock",
+            "lastsale": "$47.955",
+            "netchange": "0.475",
+            "pctchange": "1.00%",
+            "marketCap": "361,191,118,519"
+        },
+        {
+            "symbol": "PLTR",
+            "name": "Palantir Technologies Inc. Class A Common Stock",
+            "lastsale": "$148.13",
+            "netchange": "-3.66",
+            "pctchange": "-2.411%",
+            "marketCap": "349,573,823,368"
+        },
+        {
+            "symbol": "ABBV",
+            "name": "AbbVie Inc. Common Stock",
+            "lastsale": "$186.86",
+            "netchange": "2.01",
+            "pctchange": "1.087%",
+            "marketCap": "330,070,069,625"
+        },
+        {
+            "symbol": "KO",
+            "name": "Coca-Cola Company (The) Common Stock",
+            "lastsale": "$69.395",
+            "netchange": "-0.675",
+            "pctchange": "-0.963%",
+            "marketCap": "298,694,590,284"
+        },
+        {
+            "symbol": "NVO",
+            "name": "Novo Nordisk A/S Common Stock",
+            "lastsale": "$66.55",
+            "netchange": "1.63",
+            "pctchange": "2.511%",
+            "marketCap": "297,145,750,000"
+        },
+        {
+            "symbol": "BABA",
+            "name": "Alibaba Group Holding Limited American Depositary Shares each representing eight Ordinary share",
+            "lastsale": "$120.9375",
+            "netchange": "0.6675",
+            "pctchange": "0.555%",
+            "marketCap": "279,278,485,178"
+        },
+        {
+            "symbol": "ASML",
+            "name": "ASML Holding N.V. New York Registry Shares",
+            "lastsale": "$703.80",
+            "netchange": "-15.88",
+            "pctchange": "-2.207%",
+            "marketCap": "276,793,082,136"
+        },
+        {
+            "symbol": "GE",
+            "name": "GE Aerospace Common Stock",
+            "lastsale": "$259.415",
+            "netchange": "-3.445",
+            "pctchange": "-1.311%",
+            "marketCap": "276,636,690,994"
+        },
+        {
+            "symbol": "CSCO",
+            "name": "Cisco Systems, Inc. Common Stock (DE)",
+            "lastsale": "$68.425",
+            "netchange": "0.085",
+            "pctchange": "0.124%",
+            "marketCap": "270,962,875,467"
+        },
+        {
+            "symbol": "WFC",
+            "name": "Wells Fargo & Company Common Stock",
+            "lastsale": "$81.95",
+            "netchange": "1.67",
+            "pctchange": "2.08%",
+            "marketCap": "266,680,251,450"
+        },
+        {
+            "symbol": "TMUS",
+            "name": "T-Mobile US, Inc. Common Stock",
+            "lastsale": "$233.26",
+            "netchange": "0.64",
+            "pctchange": "0.275%",
+            "marketCap": "264,853,925,892"
+        },
+        {
+            "symbol": "PM",
+            "name": "Philip Morris International Inc Common Stock",
+            "lastsale": "$168.47",
+            "netchange": "-12.01",
+            "pctchange": "-6.654%",
+            "marketCap": "262,226,449,652"
+        },
+        {
+            "symbol": "CVX",
+            "name": "Chevron Corporation Common Stock",
+            "lastsale": "$149.93",
+            "netchange": "0.25",
+            "pctchange": "0.167%",
+            "marketCap": "261,836,838,177"
+        },
+        {
+            "symbol": "IBM",
+            "name": "International Business Machines Corporation Common Stock",
+            "lastsale": "$281.45",
+            "netchange": "-3.26",
+            "pctchange": "-1.145%",
+            "marketCap": "261,578,666,034"
+        },
+        {
+            "symbol": "UNH",
+            "name": "UnitedHealth Group Incorporated Common Stock (DE)",
+            "lastsale": "$284.72",
+            "netchange": "2.58",
+            "pctchange": "0.914%",
+            "marketCap": "258,281,026,362"
+        },
+        {
+            "symbol": "CRM",
+            "name": "Salesforce, Inc. Common Stock",
+            "lastsale": "$263.05",
+            "netchange": "0.77",
+            "pctchange": "0.294%",
+            "marketCap": "251,475,800,000"
+        },
+        {
+            "symbol": "AMD",
+            "name": "Advanced Micro Devices, Inc. Common Stock",
+            "lastsale": "$154.30",
+            "netchange": "-2.70",
+            "pctchange": "-1.72%",
+            "marketCap": "250,182,667,289"
+        },
+        {
+            "symbol": "NVS",
+            "name": "Novartis AG Common Stock",
+            "lastsale": "$116.29",
+            "netchange": "2.15",
+            "pctchange": "1.884%",
+            "marketCap": "229,683,128,650"
+        },
+        {
+            "symbol": "MS",
+            "name": "Morgan Stanley Common Stock",
+            "lastsale": "$140.375",
+            "netchange": "-0.095",
+            "pctchange": "-0.068%",
+            "marketCap": "225,206,301,804"
+        },
+        {
+            "symbol": "HSBC",
+            "name": "HSBC Holdings, plc. Common Stock",
+            "lastsale": "$64.19",
+            "netchange": "0.59",
+            "pctchange": "0.928%",
+            "marketCap": "224,037,204,019"
+        },
+        {
+            "symbol": "CCZ",
+            "name": "Comcast Holdings ZONES",
+            "lastsale": "$59.75",
+            "netchange": "UNCH",
+            "pctchange": "--",
+            "marketCap": "223,088,809,638"
+        },
+        {
+            "symbol": "LIN",
+            "name": "Linde plc Ordinary Shares",
+            "lastsale": "$471.79",
+            "netchange": "1.36",
+            "pctchange": "0.289%",
+            "marketCap": "222,351,892,977"
+        },
+        {
+            "symbol": "TM",
+            "name": "Toyota Motor Corporation Common Stock",
+            "lastsale": "$169.79",
+            "netchange": "-0.24",
+            "pctchange": "-0.141%",
+            "marketCap": "221,557,778,565"
+        },
+        {
+            "symbol": "AZN",
+            "name": "AstraZeneca PLC American Depositary Shares",
+            "lastsale": "$70.27",
+            "netchange": "1.55",
+            "pctchange": "2.256%",
+            "marketCap": "217,931,255,681"
+        },
+        {
+            "symbol": "DIS",
+            "name": "Walt Disney Company (The) Common Stock",
+            "lastsale": "$121.00",
+            "netchange": "0.16",
+            "pctchange": "0.132%",
+            "marketCap": "217,527,303,631"
+        }
+    ]
+} 

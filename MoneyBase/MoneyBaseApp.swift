@@ -11,7 +11,11 @@ import SwiftUI
 struct MoneyBaseApp: App {
     var body: some Scene {
         WindowGroup {
-            StockListView(viewModel: .init())
+            StockListView(
+                viewModel: .init(
+                    useCase: StockUseCase()
+                )
+            )
         }
     }
 }

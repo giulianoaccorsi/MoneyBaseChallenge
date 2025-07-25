@@ -35,6 +35,7 @@ struct DesignSystem {
     // MARK: - Typography
     struct Typography {
         // Bold
+        static let boldExtraLarge = Font.system(size: 40, weight: .bold, design: .rounded)
         static let boldLarge = Font.system(size: 36, weight: .bold, design: .rounded)
         static let boldMedium = Font.system(size: 20, weight: .bold, design: .rounded)
         static let boldSmall = Font.system(size: 14, weight: .bold, design: .rounded)
